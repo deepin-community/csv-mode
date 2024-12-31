@@ -1,15 +1,42 @@
-Source: template-repository
-Section: unknown
+Source: csv-mode
+Section: lisp
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: Debian QA Group <packages@qa.debian.org>
+Build-Depends: debhelper-compat (= 13),
+               dh-elpa
+Rules-Requires-Root: no
+Testsuite: autopkgtest-pkg-elpa
+Standards-Version: 4.7.0
+Vcs-Browser: https://salsa.debian.org/emacsen-team/csv-mode
+Vcs-Git: https://salsa.debian.org/emacsen-team/csv-mode.git
+Homepage: https://elpa.gnu.org/packages/csv-mode.html
 
-Package: template-repository
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Package: elpa-csv-mode
+Architecture: all
+Depends: ${elpa:Depends}, ${misc:Depends}
+Recommends: emacs
+Enhances: emacs
+Description: Emacs major mode for editing comma, char, and tab separated values
+ This package implements CSV mode, a major mode for editing records in
+ a generalised CSV (character-separated values) format.  It also
+ features support for TSV (tab-separated values).  CSV mode supports
+ operations such as the following:
+ .
+   * sort lexicographically and numerically on a specified
+     field or column.
+   * kill and yank by field or column.  C-c C-k can kill more than one
+     field at once, but multiple killed fields can be yanked only as a
+     fixed group equivalent to a single field.
+   * align fields into columns.
+   * interchange between rows and columns.
+ .
+ CSV mode can recognise fields separated by a number of individual
+ characters, configurable in `csv-separators'.  CSV data fields can be
+ delimited with quote characters.  This implementation supports quoted
+ fields, where all permitted quote characters are specified in the
+ customisable user option `csv-field-quotes'.  By default, the only
+ separator is a comma and the only field quote is a double quote.
+ .
+ The global minor mode `csv-field-index-mode' displays the current
+ field index in the mode line, cf. `line-number-mode' and
+ `column-number-mode'.  It is on by default.

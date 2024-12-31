@@ -1,0 +1,1 @@
+ert_eval = (setq ert-batch-backtrace-right-margin 500)
